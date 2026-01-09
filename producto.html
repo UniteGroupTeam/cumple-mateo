@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEXUS | Ficha Técnica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'] },
+                    colors: { nexus: { black: '#030303', cyan: '#00F0FF', purple: '#7000FF', green: '#00FF94' } }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background: #030303; color: white; overflow-x: hidden; }
+        .glass-panel { background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .tech-border { border: 1px solid rgba(255,255,255,0.1); position: relative; }
+        .tech-border::before { content: ''; position: absolute; top: -1px; left: -1px; width: 10px; height: 10px; border-top: 2px solid #00F0FF; border-left: 2px solid #00F0FF; }
+        .tech-border::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 10px; height: 10px; border-bottom: 2px solid #00F0FF; border-right: 2px solid #00F0FF; }
+        
+        /* Cart Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #111; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+        /* Ajuste para imágenes PNG con fondo */
+        #img-container img { mix-blend-mode: normal; }
+        .nav-link { font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Nav Completo -->
+    <nav class="fixed w-full z-50 top-0 glass-panel">
+        <div class="px-6 h-20 flex justify-between items-center max-w-7xl mx-auto">
+            
+            <!-- LOGO INTEGRADO -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://i.imgur.com/GtqogQE.png" alt="NEXUS Logo" class="h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.3)] group-hover:scale-110 transition-transform duration-300">
+                <span class="text-xl font-tech font-bold tracking-widest text-white ml-1 group-hover:text-nexus-cyan transition-colors">NEXUS</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-8 text-sm text-gray-400">
+                <a href="index.html" class="nav-link hover:text-white transition">Interfaz</a>
+                <a href="catalogo.html" class="nav-link text-white border-b border-nexus-cyan">Hardware</a>
+                <a href="condiciones.html" class="nav-link hover:text-nexus-cyan transition">Condiciones</a>
+                <a href="gamers.html" class="nav-link hover:text-nexus-green transition">Gaming</a>
+                <a href="wwu.html" class="nav-link hover:text-nexus-purple transition">W.W.U.</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button id="cart-btn" class="relative group p-2">
+                    <i data-lucide="shopping-bag" class="text-white group-hover:text-nexus-cyan transition w-6 h-6"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-nexus-cyan text-black text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-sm hidden shadow-[0_0_10px_rgba(0,240,255,0.5)]">0</span>
+                </button>
+                <button id="menu-btn" class="md:hidden text-white hover:text-nexus-cyan transition"><i data-lucide="menu" class="w-8 h-8"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-nexus-black/95 backdrop-blur-xl translate-x-full transition-transform duration-300 flex flex-col justify-center px-10 md:hidden bg-black/95">
+        <button id="close-menu" class="absolute top-6 right-6 text-white hover:text-red-500"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <div class="space-y-6">
+            <a href="index.html" class="block text-3xl font-tech font-bold text-gray-500 hover:text-white">01 // INTERFAZ</a>
+            <a href="catalogo.html" class="block text-3xl font-tech font-bold text-nexus-cyan">02 // HARDWARE</a>
+            <a href="condiciones.html" class="block text-3xl font-tech font-bold text-gray-500 hover:text-nexus-cyan">03 // CONDICIONES</a>
+            <a href="gamers.html" class="block text-3xl font-tech font-bold text-gray-500 hover:text-nexus-green">04 // GAMING</a>
+            <a href="wwu.html" class="block text-3xl font-tech font-bold text-gray-500 hover:text-nexus-purple">05 // W.W.U.</a>
+        </div>
+    </div>
+
+    <main class="pt-32 px-6 max-w-7xl mx-auto pb-20">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+            
+            <!-- Left: Visuals -->
+            <div class="w-full lg:w-1/2">
+                <div class="aspect-square tech-border bg-white/5 p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMxYTFhMWEiLz48L3N2Zz4=')] opacity-30"></div>
+                    <div id="img-container" class="w-full h-full flex items-center justify-center z-10 p-4">
+                        <div class="animate-pulse w-32 h-32 bg-nexus-cyan/20 rounded-full blur-xl"></div>
+                    </div>
+                    <!-- DISCLAIMER AÑADIDO -->
+                    <p class="text-xs text-gray-500 text-center mt-4 opacity-80 z-20 relative">Imagen ilustrativa. Si desean ver el producto real, por favor solicítenlo a través de nuestro contacto.</p>
+                </div>
+            </div>
+
+            <!-- Right: Specs -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <div class="mb-2 flex items-center gap-3">
+                    <span id="prod-cat" class="text-nexus-cyan font-mono text-xs uppercase tracking-widest border border-nexus-cyan/30 px-2 py-1 bg-nexus-cyan/5">Sistema</span>
+                    <span id="prod-badge" class="hidden text-nexus-purple font-mono text-xs uppercase tracking-widest border border-nexus-purple/30 px-2 py-1 bg-nexus-purple/5"></span>
+                </div>
+                
+                <h1 id="prod-name" class="text-4xl md:text-6xl font-bold font-tech mb-6 leading-none text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
+                    CARGANDO DATOS...
+                </h1>
+
+                <div class="flex items-end gap-4 mb-8 border-b border-white/10 pb-8">
+                    <span id="prod-price" class="text-4xl font-mono text-white">$0.00</span>
+                    <span class="text-gray-500 text-sm mb-2">IVA INCLUIDO</span>
+                </div>
+
+                <div class="space-y-6 mb-10">
+                    <p id="prod-desc" class="text-gray-400 leading-relaxed border-l-2 border-nexus-cyan/50 pl-4">Obteniendo descripción del servidor central...</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 p-3 rounded-sm border border-white/5">
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Garantía</p>
+                            <p class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="shield" class="w-3 h-3 text-nexus-green"></i> 30 Días (Defecto)</p>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-sm border border-white/5">
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Despacho</p>
+                            <p class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="zap" class="w-3 h-3 text-nexus-cyan"></i> 24-48 Horas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions: Quantity & Cart -->
+                <div class="flex flex-col sm:flex-row gap-4 items-stretch">
+                    <!-- Quantity Selector -->
+                    <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-sm px-4 py-2 sm:w-32">
+                        <button id="qty-minus" class="text-gray-400 hover:text-white transition active:scale-90"><i data-lucide="minus" class="w-4 h-4"></i></button>
+                        <span id="qty-val" class="font-mono text-xl font-bold text-white">1</span>
+                        <button id="qty-plus" class="text-gray-400 hover:text-white transition active:scale-90"><i data-lucide="plus" class="w-4 h-4"></i></button>
+                    </div>
+
+                    <button id="add-btn" class="flex-1 px-6 py-4 border border-white/20 hover:border-nexus-cyan text-white hover:bg-nexus-cyan/10 hover:text-nexus-cyan transition flex items-center justify-center gap-2 font-tech tracking-widest uppercase">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i> Añadir
+                    </button>
+
+                    <button id="buy-btn" class="flex-1 py-4 bg-nexus-cyan text-black font-bold font-tech uppercase tracking-widest hover:bg-white transition-colors clip-path-slant flex justify-center items-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+                        Comprar Ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Sidebar (Igual que en Catálogo) -->
+    <div id="cart-overlay" class="fixed inset-0 z-[90] bg-nexus-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="cart-panel" class="fixed inset-y-0 right-0 w-full md:w-[450px] z-[100] bg-[#050505] border-l border-white/10 flex flex-col transform translate-x-full transition-transform duration-300">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center bg-white/5">
+            <h3 class="font-tech font-bold text-xl tracking-wider text-white flex items-center gap-2">
+                <i data-lucide="cpu" class="w-5 h-5 text-nexus-cyan"></i> MODULO_CARRITO
+            </h3>
+            <button id="close-cart" class="text-gray-400 hover:text-white transition"><i data-lucide="x" class="w-6 h-6"></i></button>
+        </div>
+        
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4 custom-scrollbar"></div>
+        
+        <div class="p-6 border-t border-white/10 bg-nexus-black space-y-4">
+            <div class="flex justify-between items-end font-tech">
+                <span class="text-gray-500 tracking-widest text-sm">TOTAL ESTIMADO</span>
+                <span id="cart-total" class="font-bold text-3xl text-white text-shadow-glow">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="w-full py-4 bg-nexus-cyan/10 border border-nexus-cyan text-nexus-cyan font-bold font-tech tracking-widest uppercase hover:bg-nexus-cyan hover:text-black transition-all duration-300 flex justify-center items-center gap-2 group">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Iniciar Transferencia
+            </button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // --- BASE DE DATOS COMPLETA ---
+        // ESTA LISTA DEBE SER IDÉNTICA A LA DEL CATÁLOGO PARA QUE FUNCIONE
+        const products = [
+            // --- PRODUCTOS ESTRELLA ---
+            { id: 'tab-ipad', name: 'Tablet tipo iPad Pro 10.1"', price: 2499, category: 'Electrónica', img: 'https://i.imgur.com/jqFnQzA.png', badge: 'TOP VENTAS', desc: 'Pantalla de 10.1" HD. 8GB RAM + 256GB Almacenamiento. Procesador Octa-Core. Ideal para productividad y entretenimiento.' },
+            { id: 'tab-s25', name: 'Tablet S25 Ultra', price: 2499, category: 'Electrónica', img: 'https://i.imgur.com/e1g2Em1.png', badge: 'NEW', desc: 'Rendimiento superior. Pantalla 10.1", Android 12, 8GB RAM, 256GB ROM. Doble cámara y batería de larga duración.' },
+            { id: 'sw-ultra-apple', name: 'Apple Watch Ultra (OEM)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/GsqP7WQ.png', badge: 'HOT', desc: 'Diseño robusto de 49mm. Tornillos reales, broche de seguridad en correas y pantalla infinita.' },
+            { id: 'au-beats-studio', name: 'Beats Studio Pro (OEM)', price: 599, category: 'Audio', img: 'https://imgur.com/FHcG52z.png', badge: 'PRO AUDIO', desc: 'Sonido de alta fidelidad con cancelación de ruido activa. Diseño circumaural para máxima comodidad.' },
+
+            // --- SMARTWATCHES ---
+            { id: 'sw-hw-s10', name: 'HW S10 Call (Android)', price: 1399, category: 'Smartwatch', img: 'https://imgur.com/5pliG0r.png', badge: 'ANDROID', desc: 'Sistema Android completo, PlayStore y cámara integrada.' },
+            { id: 'sw-ultra-hermes', name: 'Apple Watch Ultra Hermes (OEM)', price: 850, category: 'Smartwatch', img: 'https://i.imgur.com/JoHpOnX.png', badge: 'LUXE', desc: 'Edición de lujo. Incluye correas exclusivas estilo Hermes y carátulas premium.' },
+            { id: 'sw-s10-hermes', name: 'Apple Watch S10 Hermes (OEM)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/IkRxLiq.png', desc: 'Serie 10 con estética Hermes. Elegancia y funcionalidad con doble extensible incluido.' },
+            { id: 'sw-s10-nike', name: 'Apple Watch S10 Nike (OEM)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/YhM4qTx.png', badge: 'SPORT', desc: 'Edición deportiva. Correas perforadas Nike para mejor ventilación y carátulas exclusivas.' },
+            { id: 'sw-r9-edge', name: 'G-Tide R9 Edge', price: 1399, category: 'Smartwatch', img: 'https://i.imgur.com/yxK0Cl6.png', badge: 'RECOMENDADO', desc: 'VENTAJAS: Pantalla AMOLED Curva 3D, Sumergible IP68, cuerpo metálico delgado y batería de larga duración.' },
+            { id: 'sw-s6-pro', name: 'G-Tide S6 Pro', price: 999, category: 'Smartwatch', img: 'https://i.imgur.com/LH9vZCl.png', desc: 'Pack versátil: Incluye 3 correas intercambiables (silicón, metálica, piel) para cualquier ocasión.' },
+            { id: 'sw-s5-pro', name: 'G-Tide S5 Pro', price: 999, category: 'Smartwatch', img: 'https://i.imgur.com/LpW23dS.png', desc: 'Estilo Ultra resistente. Pantalla grande de alta definición y monitoreo deportivo.' },
+            { id: 'sw-hk11-ultra3', name: 'HK11 Ultra 3 AMOLED', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/CBjs1KR.png', badge: 'AMOLED', desc: 'Pantalla AMOLED real. Fluidez extrema, colores vibrantes y diseño 1:1 Ultra.' },
+            { id: 'sw-hk11-promax', name: 'HK11 Pro Max+ AMOLED', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/5viNy6h.png', desc: 'Pantalla AMOLED de alto rendimiento. Interfaz súper fluida y potentes funciones.' },
+            { id: 'sw-hk11-mini', name: 'HK11 Mini AMOLED', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/G2iw0TN.png', badge: 'COMPACTO', desc: 'Versión compacta de alta gama. Ideal para muñecas más pequeñas sin sacrificar potencia AMOLED.' },
+            { id: 'sw-sam-amoled', name: 'Galaxy Watch AMOLED (OEM)', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/rGlBUnO.png', desc: 'Pantalla AMOLED vibrante con logo Samsung al encender. NOTA: NO es sumergible.' },
+            { id: 'sw-sam-ultra', name: 'Samsung Watch Ultra (OEM)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/2bQiDjQ.png', desc: 'Diseño deportivo inspirado en el modelo Ultra. Resistente a salpicaduras leves.' },
+            { id: 'sw-kit-apple', name: 'Kit Apple Ultra Premium', price: 1150, category: 'Smartwatch', img: 'https://placehold.co/400x400/111/444?text=Kit+Apple', badge: 'BUNDLE', desc: 'La experiencia completa: Reloj + Audífonos + Batería + Cargador.' },
+
+
+            // --- AUDIO ---
+            { id: 'au-l22', name: 'Audífonos L22 G-Tide', price: 299, category: 'Audio', img: 'https://imgur.com/QtIVFxk.png', desc: 'Excelente relación calidad-precio. Audio claro y batería duradera.' },
+            { id: 'au-airpods-kids', name: 'AirPods Pro Niños', price: 299, category: 'Audio', img: 'https://imgur.com/rqxX0Yl.png', desc: 'Fundas divertidas de personajes.' },
+            { id: 'au-gtide-ows8', name: 'G-Tide OWS8', price: 450, category: 'Audio', img: 'https://imgur.com/4YMMZ8A.png', badge: 'OPEN EAR', desc: 'Diseño abierto deportivo. Escucha tu música sin perder contacto con el entorno.' },
+            { id: 'au-gtide-ac01', name: 'G-Tide AC01', price: 280, category: 'Audio', img: 'https://imgur.com/RjQg82W.png', desc: 'Conducción ósea simulada. Comodidad extrema para uso prolongado.' },
+            { id: 'au-c1-rgb', name: 'Audífonos C1 RGB', price: 399, category: 'Audio', img: 'https://imgur.com/GbMBVsS.png', desc: 'Diadema con luces RGB para estilo gamer y sonido envolvente.' },
+            { id: 'au-jbl-flip7', name: 'JBL Flip 7 1.1', price: 450, category: 'Audio', img: 'https://imgur.com/QrSrMKc.png', desc: 'Réplica 1.1 con gran sonido, bajos profundos y diseño portátil.' },
+            { id: 'au-clip-1', name: 'G-Tide Audífonos Clip 1', price: 399, category: 'Audio', img: 'https://i.imgur.com/E2ELAAB.png', badge: 'INNOVACIÓN', desc: 'Diseño Clip Open-Ear revolucionario. Sujeción firme y audio direccional.' },
+            { id: 'au-spk-karaoke', name: 'Bocina Karaoke Box BTS', price: 950, category: 'Audio', img: 'https://i.imgur.com/syXUnDi.png', desc: 'Potencia y diversión garantizada. Incluye micrófono inalámbrico y luces LED rítmicas.' },
+            { id: 'au-spk-65', name: 'Bocina 6.5" Fantastic Quality', price: 499, category: 'Audio', img: 'https://i.imgur.com/Of8qn1M.png', desc: 'Tamaño compacto, gran sonido. Conectividad Bluetooth, USB y radio FM.' },
+            { id: 'au-spk-8', name: 'Bocina 8" Fantastic Quality', price: 650, category: 'Audio', img: 'https://i.imgur.com/P7wxRdK.png', desc: 'Mayor potencia de bajos con woofer de 8 pulgadas. Batería recargable de larga duración.' },
+            { id: 'au-max-orig', name: 'AirPods Max (Original Quality)', price: 2899, category: 'Audio', img: 'https://placehold.co/400x400/111/444?text=AirPods+Max', badge: 'TOP', desc: 'Audio de alta fidelidad. Cancelación de ruido activa real.' },
+            { id: 'au-max-11', name: 'AirPods Max (v1.1)', price: 799, category: 'Audio', img: 'https://placehold.co/400x400/111/444?text=Max+1.1', desc: 'Estilo icónico a un precio accesible. Excelente sonido.' },
+            { id: 'au-pro2', name: 'AirPods Pro 2G (OEM)', price: 999, category: 'Audio', img: 'https://placehold.co/400x400/111/444?text=Pro+2G', desc: 'Cancelación de ruido mejorada y audio espacial.' },
+            { id: 'au-gtide-future', name: 'G-TIDE Earpods Future', price: 499, category: 'Audio', img: 'https://placehold.co/400x400/111/444?text=Future+Buds', badge: 'TECH', desc: 'Estuche con pantalla inteligente.' },
+
+
+            // --- ACCESORIOS & GADGETS ---
+            { id: 'ac-lentes-smart', name: 'Lentes Inteligentes', price: 650, category: 'Accesorios', img: 'https://imgur.com/KeBxXe1.png', badge: 'TECH', desc: 'Audio Bluetooth integrado en el armazón. Estilo y tecnología en uno.' },
+            { id: 'ac-case-silicon', name: 'Case de Silicón (Lote)', price: 99, category: 'Accesorios', img: 'https://imgur.com/pGnhOHO.png', desc: 'Colores variados. Precio por pieza en lote. Protección suave y duradera.' },
+            { id: 'ac-pencil-oem', name: 'Pencil OEM', price: 199, category: 'Accesorios', img: 'https://imgur.com/MMTzs38.png', desc: 'Lápiz óptico genérico. Alta precisión para tablets y iPad.' },
+            { id: 'ac-apple-pencil', name: 'Apple Pencil OEM', price: 299, category: 'Accesorios', img: 'https://imgur.com/JjGI54l.png', desc: 'Caja tipo original. Funcionalidad similar al original para dibujo y escritura.' },
+            { id: 'ac-mica-priv', name: 'Mica de Privacidad', price: 80, category: 'Accesorios', img: 'https://imgur.com/tHhkPqq.png', desc: 'Protege tu pantalla de miradas indiscretas y golpes.' },
+            { id: 'ac-wallet-piel', name: 'Wallet MagSafe Piel', price: 250, category: 'Accesorios', img: 'https://imgur.com/pQQdXSO.png', desc: 'Cartera magnética premium de piel. Se adhiere perfectamente a tu iPhone.' },
+            { id: 'ac-case-clear', name: 'Case MagSafe Clear', price: 120, category: 'Accesorios', img: 'https://imgur.com/IaFgYHl.png', desc: 'Transparente con imanes MagSafe integrados. No se amarillenta fácilmente.' },
+            { id: 'ac-soporte', name: 'Soporte Celular', price: 130, category: 'Accesorios', img: 'https://imgur.com/5F9XBTy.png', desc: 'Soporte ajustable para escritorio. Ideal para videollamadas y ver contenido.' },
+            { id: 'ac-oceano', name: 'Oceano Pack 10L', price: 180, category: 'Accesorios', img: 'https://placehold.co/400x400/111/444?text=Dry+Bag', desc: 'Bolsa seca impermeable para aventuras.' },
+
+
+            // --- CARGA ---
+            { id: 'ch-cable-1h', name: 'Cable 1Hora 1.5M Tipo C', price: 80, category: 'Carga', img: 'https://imgur.com/IKQYIR1.png', desc: 'Cable reforzado y duradero de la marca 1Hora. Carga eficiente.' },
+            { id: 'ch-pb-10k', name: 'Power Bank 10,000 mAh P1', price: 399, category: 'Carga', img: 'https://imgur.com/YgGTAFG.png', desc: 'Carga portátil G-Tide. Diseño compacto y ligero para llevar a todos lados.' },
+            { id: 'ch-60w-triple', name: 'Cargador 60W Triple', price: 399, category: 'Carga', img: 'https://imgur.com/CGvyR7w.png', badge: 'FAST', desc: 'Carga rápida con 3 puertos (USB-C y USB-A). Ideal para múltiples dispositivos.' },
+            { id: 'ch-pb-40k', name: 'Power Bank 40,000 mAh', price: 1100, category: 'Carga', img: 'https://imgur.com/JH6yAAY.png', badge: 'POWER', desc: 'Energía masiva G-Tide. Carga tu celular múltiples veces. Ideal para viajes.' },
+            { id: 'ch-cable-4in1-2m', name: 'Cable 4 en 1 (2M Reforzado)', price: 180, category: 'Carga', img: 'https://imgur.com/PTNCBgS.png', desc: 'Cable versátil con múltiples conectores. Largo alcance y resistencia superior.' },
+            { id: 'ch-cable-4in1-color', name: 'Cable 4 en 1 Color', price: 100, category: 'Carga', img: 'https://imgur.com/3eRTGzx.png', desc: 'Cable colorido de 1.5M. Práctico y económico.' },
+            { id: 'ch-magsafe-bat', name: 'Batería MagSafe c/Pantalla', price: 399, category: 'Carga', img: 'https://placehold.co/400x400/111/444?text=MagSafe+LCD', desc: 'Carga magnética con indicador LED.' },
+
+
+            // --- GAMING & OTROS ---
+            { id: 'gm-combo-4', name: 'Combo Gamer 4 Piezas', price: 650, category: 'Gaming', img: 'https://imgur.com/Ers7LoP.png', desc: 'Kit completo de inicio: Teclado RGB, Mouse de precisión, Audífonos y Mousepad.' },
+            { id: 'gm-r40-ultra', name: 'Game Master R40 Ultra', price: 1399, category: 'Gaming', img: 'https://i.imgur.com/rqGh7VN.png', badge: 'HOT', desc: 'Consola portátil premium. Pantalla de alta resolución, emula miles de juegos retro.' },
+            { id: 'gm-stick', name: 'Game Stick Lite 4K', price: 899, category: 'Gaming', img: 'https://i.imgur.com/t0imnN7.png', desc: 'Conecta directo al HDMI. Incluye miles de juegos clásicos y dos controles inalámbricos.' },
+            { id: 'dp-box', name: 'Entrenador de Box Musical', price: 899, category: 'Deportes', img: 'https://i.imgur.com/7AgCZwq.png', desc: 'Máquina de entrenamiento montable en pared. Mejora reflejos al ritmo de la música.' },
+            { id: 'gm-pistola', name: 'Pistola Hidrogel AK47', price: 350, category: 'Gaming', img: 'https://placehold.co/400x400/111/444?text=AK47+Gel', desc: 'Dispara orbeez de hidrogel. Batería recargable.' },
+            { id: 'gm-reloj-kids', name: 'Reloj Gamer Kids + Cámara', price: 149, category: 'Gaming', img: 'https://placehold.co/400x400/111/444?text=Reloj+Kids', desc: 'Entretenimiento para niños con minijuegos y cámara.' },
+
+             // --- HOGAR ---
+            { id: 'hg-camara-360', name: 'Cámara Foco 360 WiFi', price: 399, category: 'Hogar', img: 'https://placehold.co/400x400/111/444?text=Cam+360', desc: 'Seguridad discreta. Instalación fácil como foco.' },
+            { id: 'hg-ventilador', name: 'Ventilador Humidificador', price: 289, category: 'Hogar', img: 'https://placehold.co/400x400/111/444?text=Ventilador', desc: 'Frescura portátil con neblina de agua.' },
+            { id: 'hg-termo', name: 'Termo Stanley (Top Quality)', price: 299, category: 'Hogar', img: 'https://placehold.co/400x400/111/444?text=Stanley', desc: 'Mantiene temperatura por horas. Acero inoxidable.' },
+            { id: 'hg-tablet-kids', name: 'Tablet Kids (Minions/Sonic)', price: 1250, category: 'Hogar', img: 'https://placehold.co/400x400/111/444?text=Tablet+Kids', desc: 'Diseño resistente a golpes con fundas de personajes.' }
+
+        ];
+
+        // --- LÓGICA DE PRODUCTO (ID, Cantidad, Comprar, Añadir) ---
+        const params = new URLSearchParams(window.location.search);
+        const prodId = params.get('id') || products[0].id; // Fallback al primer producto
+        const product = products.find(p => p.id === prodId) || products[0];
+        
+        let quantity = 1;
+        const qtyVal = document.getElementById('qty-val');
+
+        if (product) {
+            document.title = `NEXUS | ${product.name}`;
+            document.getElementById('prod-name').innerText = product.name;
+            document.getElementById('prod-price').innerText = `$${product.price}`;
+            document.getElementById('prod-cat').innerText = product.category;
+            document.getElementById('prod-desc').innerText = product.desc;
+            
+            if(product.badge) {
+                const b = document.getElementById('prod-badge');
+                b.innerText = product.badge;
+                b.classList.remove('hidden');
+            }
+            
+            // Renderizar imagen con manejo de errores simple
+            document.getElementById('img-container').innerHTML = `<img src="${product.img}" class="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.1)]" onerror="this.src='https://placehold.co/400x400/111/444?text=NEXUS'">`;
+
+            // -- Lógica de Cantidad --
+            document.getElementById('qty-minus').onclick = () => {
+                if (quantity > 1) {
+                    quantity--;
+                    qtyVal.innerText = quantity;
+                }
+            };
+            document.getElementById('qty-plus').onclick = () => {
+                quantity++;
+                qtyVal.innerText = quantity;
+            };
+
+            // -- Compra Directa --
+            document.getElementById('buy-btn').onclick = () => {
+                const text = `SOLICITUD_COMPRA::NEXUS\n\n- Producto: ${product.name}\n- Cantidad: ${quantity}\n- Total aprox: $${product.price * quantity}\n\nEspero instrucciones de pago.`;
+                window.open(`https://wa.me/525574123521?text=${encodeURIComponent(text)}`, '_blank');
+            };
+
+            // -- Añadir al Carrito (Múltiple) --
+            document.getElementById('add-btn').onclick = () => {
+                let c = JSON.parse(localStorage.getItem('uniteCart')) || [];
+                // Añadimos 'quantity' veces el producto al carrito
+                for(let i=0; i<quantity; i++) {
+                    c.push(product);
+                }
+                localStorage.setItem('uniteCart', JSON.stringify(c));
+                
+                // Feedback Visual y Abrir Carrito
+                openCart();
+                renderCart();
+            };
+        }
+
+        // --- LÓGICA DE CARRITO (Replicada de Catálogo) ---
+        let cart = JSON.parse(localStorage.getItem('uniteCart')) || [];
+        const cartCount = document.getElementById('cart-count');
+        const cartPanel = document.getElementById('cart-panel');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        function saveCart() {
+            localStorage.setItem('uniteCart', JSON.stringify(cart));
+            cartCount.innerText = cart.length;
+            cartCount.classList.toggle('hidden', cart.length === 0);
+        }
+
+        function renderCart() {
+            cart = JSON.parse(localStorage.getItem('uniteCart')) || [];
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            if(cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="text-center text-gray-600 font-tech py-10 tracking-widest">SISTEMA_VACÍO</div>';
+            } else {
+                cart.forEach((item, idx) => {
+                    total += item.price;
+                    const el = document.createElement('div');
+                    el.className = 'flex items-center gap-4 bg-white/5 p-3 rounded-sm border border-white/5 relative group';
+                    el.innerHTML = `
+                        <div class="w-16 h-16 bg-white/10 rounded-sm flex-shrink-0 flex items-center justify-center p-2"><img src="${item.img}" class="w-full h-full object-contain"></div>
+                        <div class="flex-grow min-w-0">
+                            <p class="text-xs font-tech text-nexus-cyan mb-1 tracking-wider uppercase">${item.category}</p>
+                            <p class="text-sm font-bold text-white truncate">${item.name}</p>
+                            <p class="text-xs text-gray-400">$${item.price}</p>
+                        </div>
+                        <button onclick="removeCartItem(${idx})" class="p-2 text-gray-600 hover:text-nexus-red transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+            cartTotal.innerText = `$${total.toLocaleString()}`;
+            saveCart(); // Update badge
+            lucide.createIcons();
+        }
+
+        window.removeCartItem = (idx) => { 
+            cart.splice(idx, 1); 
+            localStorage.setItem('uniteCart', JSON.stringify(cart)); // Guardar cambio
+            renderCart(); 
+        };
+
+        const openCart = () => { 
+            renderCart(); // Cargar datos frescos
+            cartOverlay.classList.remove('hidden'); 
+            setTimeout(() => { 
+                cartOverlay.classList.remove('opacity-0'); 
+                cartPanel.classList.remove('translate-x-full'); 
+            }, 10); 
+        };
+        
+        const closeCartFn = () => {
+            cartPanel.classList.add('translate-x-full');
+            cartOverlay.classList.add('opacity-0');
+            setTimeout(() => cartOverlay.classList.add('hidden'), 300);
+        };
+
+        document.getElementById('cart-btn').addEventListener('click', openCart);
+        document.getElementById('close-cart').addEventListener('click', closeCartFn);
+        cartOverlay.addEventListener('click', closeCartFn);
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if(cart.length === 0) return;
+            let msg = "INICIANDO_SECUENCIA_PEDIDO::NEXUS\n\nÍTEMS:\n";
+            let t = 0;
+            cart.forEach(p => { msg += `[+] ${p.name} ($${p.price})\n`; t += p.price; });
+            msg += `\nVALOR_TOTAL: $${t}\n\nEsperando instrucciones de pago.`;
+            window.open(`https://wa.me/525574123521?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+        
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Init
+        renderCart();
+    </script>
+</body>
+</html>

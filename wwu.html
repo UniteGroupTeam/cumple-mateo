@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | Trabaja con Unite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
+    <style>
+        body { background: #030303; color: white; font-family: 'Outfit'; }
+        .font-tech { font-family: 'Rajdhani', sans-serif; }
+        .holo-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        .tier-card { transition: 0.3s; position: relative; }
+        .tier-gold { border: 1px solid rgba(251, 188, 5, 0.3); background: linear-gradient(180deg, rgba(251,188,5,0.05) 0%, transparent 100%); box-shadow: 0 0 30px rgba(251, 188, 5, 0.05); }
+        .tier-gold:hover { box-shadow: 0 0 50px rgba(251, 188, 5, 0.15); transform: scale(1.02); }
+        .check-icon { color: #00F0FF; } .gold-icon { color: #FBBC05; }
+    </style>
+</head>
+<body class="overflow-x-hidden flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 top-0 bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="px-6 py-4 flex justify-between items-center max-w-5xl mx-auto">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://i.imgur.com/GtqogQE.png" alt="NEXUS Logo" class="h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform duration-300">
+                <span class="font-tech font-bold text-xl text-white ml-1">NEXUS <span class="text-gray-500">SOCIOS</span></span>
+            </a>
+            <a href="index.html" class="text-sm text-gray-400 hover:text-white"><i data-lucide="x"></i></a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 max-w-5xl mx-auto flex-grow">
+        
+        <div class="flex flex-col md:flex-row items-center gap-10 mb-12">
+            <div class="w-48 h-48 rounded-full border border-white/10 relative overflow-hidden bg-white/5">
+                <div class="absolute inset-0 bg-gradient-to-tr from-nexus-cyan/20 to-transparent"></div>
+                 <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/lego_man.glb" camera-controls auto-rotate disable-zoom class="w-full h-full" style="background:transparent;"></model-viewer>
+            </div>
+            <div class="text-center md:text-left">
+                <h1 class="text-5xl font-tech font-bold mb-4">INICIATIVA <span class="text-nexus-cyan text-xl block md:inline md:ml-2 tracking-widest">W.W.U.</span></h1>
+                <p class="text-gray-400 max-w-lg leading-relaxed mb-4">
+                    Hola, soy Rodrigo. NEXUS es más que una tienda; es un ecosistema B2B/B2C diseñado para emprendedores digitales.
+                </p>
+            </div>
+        </div>
+
+        <!-- Nueva Sección: Respaldo Corporativo -->
+        <div class="mb-16 holo-card p-6 rounded-lg border-l-4 border-l-blue-600 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="font-tech text-xl text-white mb-2 flex items-center gap-2">
+                    <i data-lucide="building-2" class="text-blue-500"></i> RESPALDO ESTRATÉGICO
+                </h3>
+                <p class="text-sm text-gray-400 max-w-2xl">
+                    NEXUS opera bajo la infraestructura global de <strong>Unite Group</strong>. Esto garantiza a nuestros socios acceso a logística de nivel empresarial, soporte legal y una red de tecnología escalable que ninguna otra plataforma ofrece.
+                </p>
+            </div>
+            <a href="unite.html" class="px-6 py-3 bg-white/5 hover:bg-blue-600/20 border border-white/10 hover:border-blue-500 text-white font-tech font-bold text-sm tracking-widest uppercase transition-all whitespace-nowrap">
+                Ver Holding & Directiva
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="holo-card p-8 rounded-sm flex flex-col">
+                <div class="mb-6">
+                    <span class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1">NIVEL_ENTRADA</span>
+                    <h3 class="text-3xl font-tech font-bold mt-2">ACCESO BÁSICO</h3>
+                    <p class="text-4xl mt-2 font-bold">$0 <span class="text-sm font-normal text-gray-500">/ siempre</span></p>
+                </div>
+                <ul class="space-y-4 mb-8 text-sm text-gray-300 flex-grow font-mono">
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 check-icon"></i> Acceso a Grupo Mayoreo</li>
+                    <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 check-icon"></i> Permiso de Venta Directa</li>
+                    <li class="flex gap-3 opacity-30"><i data-lucide="x" class="w-5 h-5"></i> Sin Portal Web Dedicado</li>
+                </ul>
+                <a href="https://wa.me/525574123521" class="w-full py-3 border border-white/20 text-center hover:bg-white/10 transition font-tech font-bold uppercase tracking-widest">
+                    Iniciar Protocolo
+                </a>
+            </div>
+
+            <div class="holo-card tier-gold p-8 rounded-sm flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-[#FBBC05] text-black text-[10px] font-bold px-3 py-1 font-tech uppercase tracking-widest">Recomendado</div>
+                <div class="mb-6">
+                    <span class="text-xs font-mono text-[#FBBC05] border border-[#FBBC05]/30 px-2 py-1 bg-[#FBBC05]/10">PROFESIONAL</span>
+                    <h3 class="text-3xl font-tech font-bold mt-2 text-white">NODO SOCIO</h3>
+                    <p class="text-4xl mt-2 font-bold text-white">$250 <span class="text-sm font-normal text-gray-400">MXN / Único</span></p>
+                </div>
+                <ul class="space-y-4 mb-8 text-sm text-white flex-grow font-mono">
+                    <li class="flex gap-3"><i data-lucide="star" class="w-5 h-5 gold-icon"></i> <strong>Sitio E-commerce Completo</strong> (Como este)</li>
+                    <li class="flex gap-3"><i data-lucide="star" class="w-5 h-5 gold-icon"></i> Módulo Calculadora de Ganancias</li>
+                    <li class="flex gap-3"><i data-lucide="star" class="w-5 h-5 gold-icon"></i> Promoción en la Red (YouTube)</li>
+                </ul>
+                <a href="https://wa.me/525574123521" class="w-full py-3 bg-[#FBBC05] text-black text-center hover:bg-[#ffe082] transition font-tech font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(251,188,5,0.4)]">
+                    Desplegar Sistema
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="py-10 border-t border-white/5 text-center bg-black">
+        <a href="unite.html" class="text-xs text-gray-600 font-tech uppercase tracking-[0.2em] hover:text-blue-500 transition-colors">
+            POWERED BY UNITE GROUP &copy; 2025
+        </a>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
