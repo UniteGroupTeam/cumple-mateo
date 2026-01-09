@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cumpleaños Mateo - 8 Años</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Oswald:wght@400;700&family=Black+Han+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Hero Section with Video Background -->
+    <header class="hero-section">
+        <video autoplay muted loop playsinline poster="https://i.imgur.com/AwN2LIr.jpg" class="hero-video">
+            <source src="https://i.imgur.com/AwN2LIr.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content" data-aos="fade-up">
+            <h2 class="sub-title">MISIÓN: CUMPLEAÑOS</h2>
+            <h1 class="main-title glitch" data-text="MATEO">MATEO</h1>
+
+            <div class="age-badge">
+                <span>8</span>
+                <p>AÑOS</p>
+            </div>
+
+            <p class="theme-text">Kpop - Demon Hunters</p>
+
+            <!-- Countdown -->
+            <div id="countdown" class="countdown-timer">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <p>Días</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Hrs</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Min</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Sec</p>
+                </div>
+            </div>
+
+            <!-- Hero CTA -->
+            <a href="https://wa.me/55311115851?text=Hola%20!%20soy%20...%20y%20confirmo%20mi%20asistencia"
+                target="_blank" class="hero-btn">
+                CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+    </header>
+
+    <!-- Music Control -->
+    <button id="music-toggle" class="music-btn">
+        <i class="fas fa-volume-mute"></i>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="./mate.m4a" type="audio/mp4">
+    </audio>
+
+    <!-- Main Container (Details) -->
+    <main class="container">
+
+        <!-- Date & Time -->
+        <section class="details glass-card" data-aos="fade-up">
+            <div class="detail-item">
+                <i class="far fa-calendar-alt icon-glow"></i>
+                <h3>DOMINGO 1° DE FEBRERO</h3>
+            </div>
+            <div class="detail-item">
+                <i class="far fa-clock icon-glow"></i>
+                <h3>4:00 PM</h3>
+            </div>
+        </section>
+
+        <!-- Location -->
+        <section class="location glass-card" data-aos="fade-up">
+            <h2>UBICACIÓN DE LA MISIÓN</h2>
+            <p class="address">Salón de Fiestas Caritas</p>
+            <p class="address-detail">Angel Urraza 1778, Col. Independencia, Benito Juárez</p>
+
+            <a href="https://share.google/cI8WWmhEJVHPlJ2g1" target="_blank" class="map-link">
+                <div class="map-container">
+                    <img src="https://i.imgur.com/nBb93YG.png" alt="Mapa Ubicación" class="map-img">
+                    <div class="map-overlay">
+                        <i class="fas fa-map-marker-alt bounce"></i>
+                        <span>Ver en Google Maps</span>
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        <!-- RSVP -->
+        <section class="rsvp glass-card" data-aos="fade-up">
+            <h2>CONFIRMAR ASISTENCIA</h2>
+            <p>¡No faltes a la cacería de demonios!</p>
+            <a href="https://wa.me/55311115851?text=Hola%20!%20soy%20...%20y%20confirmo%20mi%20asistencia"
+                target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Confirmar Ahora
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
