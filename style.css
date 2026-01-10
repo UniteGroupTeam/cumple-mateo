@@ -61,6 +61,44 @@ body {
     z-index: -1;
 }
 
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    opacity: 0.6;
+    animation: fadePulse 2s infinite;
+    z-index: 20;
+}
+
+.scroll-indicator p {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.scroll-indicator i {
+    font-size: 1.5rem;
+    color: var(--primary-red);
+}
+
+@keyframes fadePulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
 .hero-content {
     text-align: center;
     color: white;
