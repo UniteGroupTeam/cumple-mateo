@@ -3,132 +3,138 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cumpleaños Mateo - 8 Años</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pompi Bar | Refugio del Barrio</title>
+    <meta name="description"
+        content="El refugio oficial de tu sed y tu hambre en el barrio. Hamburguesas, alitas, micheladas y azulitos en CDMX.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/cEymKSd.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pompi Bar | Refugio del Barrio">
+    <meta property="og:description"
+        content="Hamburguesas, alitas, micheladas y azulitos en CDMX. El refugio oficial de tu sed y tu hambre.">
+    <meta property="og:image" content="https://i.imgur.com/cEymKSd.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Pompi Bar | Refugio del Barrio">
+    <meta property="twitter:description" content="Hamburguesas, alitas, micheladas y azulitos en CDMX.">
+    <meta property="twitter:image" content="https://i.imgur.com/cEymKSd.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Oswald:wght@400;700&family=Black+Han+Sans&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto+Mono:wght@400;700&display=swap"
         rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Hero Section with Video Background -->
-    <header class="hero-section">
-        <video autoplay muted loop playsinline poster="https://i.imgur.com/AwN2LIr.jpg" class="hero-video">
-            <source src="https://i.imgur.com/AwN2LIr.mp4" type="video/mp4">
-            Tu navegador no soporta video HTML5.
+    <!-- HERO SECTION -->
+    <header id="hero">
+        <!-- Video Background -->
+        <div class="video-overlay"></div>
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://i.imgur.com/eX2ZlhB.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
         </video>
-        <div class="hero-overlay"></div>
 
-        <div class="hero-content" data-aos="fade-up">
-            <h2 class="sub-title">MISIÓN: CUMPLEAÑOS</h2>
-            <h1 class="main-title glitch" data-text="MATEO">MATEO</h1>
-
-            <div class="age-badge">
-                <span>8</span>
-                <p>AÑOS</p>
-            </div>
-
-            <p class="theme-text">Kpop - Demon Hunters</p>
-
-            <!-- Countdown -->
-            <div id="countdown" class="countdown-timer">
-                <div class="time-box">
-                    <span id="days">00</span>
-                    <p>Días</p>
-                </div>
-                <div class="time-box">
-                    <span id="hours">00</span>
-                    <p>Hrs</p>
-                </div>
-                <div class="time-box">
-                    <span id="minutes">00</span>
-                    <p>Min</p>
-                </div>
-                <div class="time-box">
-                    <span id="seconds">00</span>
-                    <p>Sec</p>
-                </div>
-            </div>
-
-            <!-- Hero CTA -->
-            <a href="https://wa.me/5531115851?text=Hola%20!%20soy%20...%20y%20confirmo%20mi%20asistencia"
-                target="_blank" class="hero-btn">
-                CLICK AQUÍ PARA CONFIRMAR ASISTENCIA
+        <div class="container hero-content">
+            <!-- Logo Image (Clickable) -->
+            <a href="menu.html" style="display: inline-block;">
+                <img src="https://i.imgur.com/cEymKSd.png" alt="Pompi Bar Logo" class="logo-main glitch-img">
             </a>
-        </div>
 
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <p>Desliza para ver la misión</p>
-            <i class="fas fa-chevron-down bounce-slow"></i>
+            <p class="tagline">EL REFUGIO OFICIAL DE TU SED Y TU HAMBRE EN EL BARRIO.</p>
+            <a href="menu.html" class="btn-cta">VER EL MENÚ COMPLETO 🍔🍺</a>
         </div>
     </header>
 
-    <!-- Music Control -->
-    <button id="music-toggle" class="music-btn">
-        <i class="fas fa-volume-mute"></i>
-    </button>
-    <audio id="bg-music" loop>
-        <source src="./mate.m4a" type="audio/mp4">
-    </audio>
+    <!-- QUIENES SOMOS -->
+    <section id="quienes-somos" class="section">
+        <div class="container">
+            <h2 class="text-neon-green">NO SOMOS PRETENCIOSOS</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem; color: #ccc;">
+                Somos el lugar para pre-copear, bajonear rico con hamburguesas y alitas, y escuchar buena música.
+                <br><br>
+                <span style="color: white; font-weight: bold; font-family: 'Saira Stencil One', sans-serif;">VIENES,
+                    COMES, BEBES Y ERES FELIZ.</span>
+            </p>
+        </div>
+    </section>
 
-    <!-- Main Container (Details) -->
-    <main class="container">
+    <!-- HIGHLIGHTS -->
+    <section id="highlights" class="section">
+        <div class="container">
 
-        <!-- Date & Time -->
-        <section class="details glass-card" data-aos="fade-up">
-            <div class="detail-item">
-                <i class="far fa-calendar-alt icon-glow"></i>
-                <h3>DOMINGO 1° DE FEBRERO</h3>
+            <!-- Bloque A: Comida -->
+            <div class="highlight-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+                    alt="Hamburguesa Jugosa">
+                <h3 class="text-neon-yellow">HAMBURGUESAS CURATIVAS</h3>
+                <p>Curamos tu alma con doble carne atascada y queso derretido.</p>
             </div>
-            <div class="detail-item">
-                <i class="far fa-clock icon-glow"></i>
-                <h3>4:00 PM</h3>
+
+            <!-- Bloque B: Bebida -->
+            <div class="highlight-card alt">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16549766b?auto=format&fit=crop&w=600&q=80"
+                    alt="Litro de Michelada Azulito">
+                <h3 class="text-neon-red">SED PELIGROSA</h3>
+                <p>Litros de Micheladas, Azulitos y menjurjes preparados pa' la calor.</p>
             </div>
-        </section>
 
-        <!-- Location -->
-        <section class="location glass-card" data-aos="fade-up">
-            <h2>UBICACIÓN DE LA MISIÓN</h2>
-            <p class="address">Salón de Fiestas Caritas</p>
-            <p class="address-detail">Angel Urraza 1778, Col. Independencia, Benito Juárez</p>
+        </div>
+    </section>
 
-            <a href="https://share.google/cI8WWmhEJVHPlJ2g1" target="_blank" class="map-link">
-                <div class="map-container">
-                    <img src="https://i.imgur.com/nBb93YG.png" alt="Mapa Ubicación" class="map-img">
-                    <div class="map-overlay">
-                        <i class="fas fa-map-marker-alt bounce"></i>
-                        <span>Ver en Google Maps</span>
-                    </div>
-                </div>
+    <!-- PROMO INSTAGRAM -->
+    <section id="promo-dynamic" class="section">
+        <div class="container">
+            <div class="promo-box">
+                <i class="fab fa-instagram icon-large text-neon-pink"></i>
+                <h2 style="color: #fff; margin: 10px 0;">¡HAZTE FAMOSO!</h2>
+                <p>Sube tu foto echando drink o bajón aquí, etiquétanos <strong>@PompiBar</strong> y podrías ser el
+                    protagonista de nuestro próximo video promocional.</p>
+                <a href="https://www.instagram.com/pompi_bar" target="_blank" class="btn-outline-neon">IR A INSTAGRAM
+                    &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links-icons">
+                <a href="https://www.instagram.com/pompi_bar" target="_blank" class="social-icon"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p style="font-family: 'Roboto Mono', monospace; margin: 1rem 0;">Lorenzo Boturini 1621b, Aeronáutica
+                Militar, Venustiano Carranza, CDMX</p>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6626645325624!2d-99.11766968509378!3d19.427027086887534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffab1a555555%3A0x123456789abcdef!2sLorenzo%20Boturini%201621%2C%20Aeron%C3%A1utica%20Militar%2C%20Venustiano%20Carranza%2C%2015970%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1610000000000!5m2!1ses!2smx"
+                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- Navigation Button -->
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Lorenzo+Boturini+1621b,Aeronautica+Militar,Venustiano+Carranza,15970+Ciudad+de+México,CDMX"
+                target="_blank" class="btn-cta"
+                style="margin-top: 15px; background-color: var(--neon-blue); color: #000; font-size: 1.2rem; clip-path: none; border-radius: 5px;">
+                <i class="fas fa-location-arrow"></i> ¡LLEVAME AHÍ AHORA! 📍
             </a>
-        </section>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2024 Pompi Bar</p>
+        </div>
+    </footer>
 
-        <!-- RSVP -->
-        <section class="rsvp glass-card" data-aos="fade-up">
-            <h2>CONFIRMAR ASISTENCIA</h2>
-            <p>¡No faltes a la cacería de demonios!</p>
-            <a href="https://wa.me/55311115851?text=Hola%20!%20soy%20...%20y%20confirmo%20mi%20asistencia"
-                target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> Click aquí para Confirmar
-            </a>
-        </section>
-
-    </main>
-
-    <!-- Confetti Canvas -->
-    <canvas id="confetti-canvas"></canvas>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 

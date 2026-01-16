@@ -1,142 +1,78 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Audio Control ---
-    const musicBtn = document.getElementById('music-toggle');
-    const bgMusic = document.getElementById('bg-music');
-    const musicIcon = musicBtn.querySelector('i');
-    let isPlaying = false;
+    // --- MENU TABS LOGIC ---
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const menuCategories = document.querySelectorAll('.menu-category');
 
-    // Try to autoplay (might fail due to browser policy)
-    // bgMusic.play().catch(e => console.log('Autoplay blocked'));
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Remove active state from all
+                tabButtons.forEach(b => b.classList.remove('active'));
+                menuCategories.forEach(c => c.classList.remove('active'));
 
-    musicBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            musicIcon.classList.remove('fa-volume-up');
-            musicIcon.classList.add('fa-volume-mute');
-            musicBtn.style.background = '#888';
-            musicBtn.style.animation = 'none';
-        } else {
-            bgMusic.play();
-            bgMusic.volume = 0.5;
-            musicIcon.classList.remove('fa-volume-mute');
-            musicIcon.classList.add('fa-volume-up');
-            musicBtn.style.background = 'var(--primary-red)';
-            musicBtn.style.animation = 'pulse 2s infinite';
-        }
-        isPlaying = !isPlaying;
-    });
+                // 2. Add active state to clicked
+                btn.classList.add('active');
 
-    // --- Confetti Explosion & Continuous Fall ---
-    const duration = 3000;
-    const animationEnd = Date.now() + duration;
+                // 3. Show target category
+                const targetId = btn.getAttribute('data-target');
+                const targetCategory = document.getElementById(targetId);
+                if (targetCategory) {
+                    targetCategory.classList.add('active');
 
-    // Initial Explosion
-    function randomInRange(min, max) {
-        return Math.random() * (max - min) + min;
-    }
+                    // Auto-scroll to top of list
+                    const tabsContainer = document.querySelector('.sticky-tabs');
+                    if (tabsContainer) {
+                        // Get position relative to viewport + current scroll
+                        // We scroll so the tabs sit at the top of the screen
+                        const yOffset = -5; // Small buffer
+                        const y = tabsContainer.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-    // Big burst at start
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#FF1493', '#FFFFFF', '#FF69B4'],
-        zIndex: 0
-    });
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
 
-    // Continuous flow ("Snow" effect but with confetti)
-    function runConfetti() {
-        // Hot Pink, White, Deep Pink
-        const colors = ['#FF1493', '#FFFFFF', '#FF69B4'];
-
-        confetti({
-            particleCount: 2,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: colors,
-            zIndex: 0 // Behind glass cards
+                    // Just a small haptic feedback if available
+                    if (navigator.vibrate) {
+                        navigator.vibrate(10); // 10ms 'crunch'
+                    }
+                }
+            });
         });
-
-        confetti({
-            particleCount: 2,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: colors,
-            zIndex: 0
-        });
-
-        requestAnimationFrame(runConfetti);
     }
 
-    // Start continuous rain after a short delay
-    setTimeout(runConfetti, 1000);
+    // --- CRUNCHY CLICKS ---
+    // Add distinct visual/haptic feedback to all primary actions
+    const actionableElements = document.querySelectorAll('.btn-cta, .menu-item, .social-link');
 
+    actionableElements.forEach(el => {
+        el.addEventListener('click', function (e) {
+            // Visual Flash
+            this.style.filter = 'brightness(1.5)';
+            setTimeout(() => {
+                this.style.filter = '';
+            }, 100);
 
-    // --- Countdown Timer ---
-    // Target: Feb 1st, 2026 at 4:00 PM (16:00)
-    // NOTE: If today is after this date, you might want to adjust the year logic.
-    // Assuming next upcoming Feb 1st.
-    const targetDate = new Date('February 1, 2026 16:00:00').getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-            document.getElementById("countdown").innerHTML = "¡LA MISIÓN HA COMENZADO!";
-            document.getElementById("countdown").style.color = "var(--primary-red)";
-            document.getElementById("countdown").style.fontSize = "2rem";
-            document.getElementById("countdown").style.fontFamily = "Black Han Sans";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown(); // Run immediately
-
-
-    // --- Scroll Animations ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+            // Haptic
+            if (navigator.vibrate) {
+                navigator.vibrate(15);
             }
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.glass-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = 'all 0.8s ease-out';
-        observer.observe(card);
     });
 
-    // Add extra pulse animation to music button on load to draw attention
-    musicBtn.style.animation = 'pulse 2s infinite';
+    // --- NEON GLITCH EFFECT ON SCROLL (Hero) ---
+    // Make the main title glitch randomly
+    const title = document.querySelector('.glitch');
+    if (title) {
+        setInterval(() => {
+            if (Math.random() > 0.9) {
+                title.style.textShadow = `
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0px red,
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0px blue
+                `;
+                setTimeout(() => {
+                    title.style.textShadow = ''; // Reset
+                }, 100);
+            }
+        }, 2000);
+    }
 });
-
-// Add Keyframes via JS or rely on CSS? CSS is cleaner but let's ensure 'pulse' is defined.
-// Actually, I missed 'pulse' in CSS. Let me inject it or just rely on the bounce I made.
-// I will inject a style tag for the pulse animation to be sure.
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(215, 25, 32, 0.7); }
-    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(215, 25, 32, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(215, 25, 32, 0); }
-}`;
-document.head.appendChild(style);
